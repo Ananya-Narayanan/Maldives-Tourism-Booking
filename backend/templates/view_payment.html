@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card-body">
+                  <h2 class="card-title">Payment Details</h2>
+
+                  <div class="table-responsive pt-4" style="width:1000px">
+                    <table class="table table-dark">
+                      <thead>
+                        <tr>
+                            <th>
+                                USER
+                            </th>
+                          <th>
+                            CARD NUMBER
+                          </th>
+                          <th>
+                           YYYY-MM-DD
+                          </th>
+                          <th>
+                            CVV
+                          </th>
+                          <th>
+                             NAME ON THE CARD
+                          </th>
+                            <th>
+                                OPTIONS
+                            </th>
+
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in data %}
+                        <tr>
+                            <td>
+                                {{i.username}}
+                            </td>
+                          <td>
+                            {{i.cardnumber}}
+                          </td>
+                          <td>
+                           {{i.monthyear}}
+                          </td>
+                          <td>
+                            {{i.cvv}}
+                          </td>
+
+                            <td>
+                            {{i.name}}
+                          </td>
+                            <td>
+                                <form action="{% url 'delete_payment'  payid=i.id %}">
+                                    <button type="submit" class="btn btn-danger"><i class="mdi mdi-close-circle-outline"></i> Delete</button>
+                                </form>
+                            </td>
+
+
+                        </tr>
+                      {% endfor %}
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+</body>
+</html>
+{% endblock %}

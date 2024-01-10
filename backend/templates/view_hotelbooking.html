@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card-body">
+                  <h2 class="card-title">Hotel Booking Details</h2>
+
+                  <div class="table-responsive pt-4" style="width:1000px">
+                    <table class="table table-dark">
+                      <thead>
+                        <tr>
+                            <th>
+                                USER
+                            </th>
+                          <th>
+                            Name
+                          </th>
+                          <th>
+                            CheckIn
+                          </th>
+                          <th>
+                            CheckOut
+                          </th>
+                          <th>
+                             Id Proof
+                          </th>
+                            <th>
+                            Rooms
+                            </th>
+                           <th>
+                           Adult
+                            </th>
+                             <th>
+                            Children
+                            </th>
+                            <th>
+                            Options
+                            </th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in datas1 %}
+                        <tr>
+                            <td>
+                                {{i.username}}
+                            </td>
+                          <td>
+                            {{i.name}}
+                          </td>
+                          <td>
+                           {{i.checkin}}
+                          </td>
+                          <td>
+                            {{i.checkout}}
+                          </td>
+                          <td>
+                            <img src="{{i.image.url}}">
+                          </td>
+                            <td>
+                            {{i.room}}
+                          </td>
+                             <td>
+                            {{i.adult}}
+                          </td>
+                            <td>
+                            {{i.children}}
+
+
+                          <td>
+                              <form action="{% url 'delete_hotelbooking' dataid=i.id  %}">
+                              <button type="submit" class="btn btn-danger"><i class="mdi mdi-close-circle-outline"></i> Delete</button>
+                            </form>
+                          </td>
+                        </tr>
+                      {% endfor %}
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+</body>
+</html>
+{% endblock %}

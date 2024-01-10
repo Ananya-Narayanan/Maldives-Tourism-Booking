@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-lg-12 stretch-card">
+                <div class="card">
+                  <div class="card-body">
+<!--                    <h4 class="card-title">Table with contextual classes</h4>-->
+                   <h2>Display places
+                   </h2>
+                    <div class="table-responsive">
+                      <table class="table table-bordered table-contextual">
+                        <thead>
+                          <tr>
+                            <th>Place Name</th>
+                            <th>Place Image </th>
+                            <th>Location</th>
+<!--                            <th>Description</th>-->
+                            <th>Options </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in data %}
+                          <tr class="table-primary">
+                            <td>{{i.placename}} </td>
+                            <td>
+                                <img src="{{i.image.url}}">
+                            </td>
+                            <td> {{i.city}} </td>
+<!--                            <td> {{i.description}} </td>-->
+                            <td>
+                                <form action="{% url 'edit_place' dataid=i.id %}">
+                                    <button type="submit" class="btn btn-success"><i class="mdi mdi-border-color"></i> Edit</button>
+                                </form>
+
+                            </td>
+                              <td>
+                                   <form action="{% url 'delete_place' dataid=i.id %}">
+                                    <button type="submit" class="btn btn-danger"><i class="mdi mdi-close-circle-outline"></i> Delete</button>
+                                </form>
+                              </td>
+                          </tr>
+                          {% endfor %}
+
+<!--                          <tr class="table-warning">-->
+<!--                            <td>-->
+<!--                                <img src="{{i.image.url}}">-->
+<!--                            </td>-->
+<!--                          </tr>-->
+
+<!--                            <td> Messsy Adam </td>-->
+<!--                            <td> Flash </td>-->
+<!--                            <td> $245.30 </td>-->
+<!--                            <td> July 1, 2015 </td>-->
+<!--                          </tr>-->
+<!--                          <tr class="table-danger">-->
+<!--                            <td> 3 </td>-->
+<!--                            <td> John Richards </td>-->
+<!--                            <td> Premeire </td>-->
+<!--                            <td> $138.00 </td>-->
+<!--                            <td> Apr 12, 2015 </td>-->
+<!--                          </tr>-->
+<!--                          <tr class="table-success">-->
+<!--                            <td> 4 </td>-->
+<!--                            <td> Peter Meggik </td>-->
+<!--                            <td> After effects </td>-->
+<!--                            <td> $ 77.99 </td>-->
+<!--                            <td> May 15, 2015 </td>-->
+<!--                          </tr>-->
+<!--                          <tr class="table-primary">-->
+<!--                            <td> 5 </td>-->
+<!--                            <td> Edward </td>-->
+<!--                            <td> Illustrator </td>-->
+<!--                            <td> $ 160.25 </td>-->
+<!--                            <td> May 03, 2015 </td>-->
+<!--                          </tr>-->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+{% if messages %}
+   {% for i in messages %}
+      {% if i.tags == 'warning' %}
+         <script>
+             swal('{{i}}','','warning');
+         </script>
+      {% elif i.tags == 'error' %}
+         <script>
+             swal('{{i}}','','error');
+         </script>
+      {% elif i.tags == 'success' %}
+         <script>
+             swal('{{i}}','','success');
+         </script>
+      {% else %}
+         <script>
+             swal('{{i}}','','info');
+         </script>
+      {% endif %}
+   {% endfor %}
+{% endif %}
+</body>
+</html>
+{% endblock %}

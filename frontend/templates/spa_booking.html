@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Booking Form HTML Template</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+</head>
+
+<body>
+	<div id="booking" class="section">
+
+		<div class="image-container">
+			<h1>Make your Reservation For Spa Treatments..!</h1>
+	<img src="{% static 'assets/img/background.jpg' %}" width="1500px" height="900px">
+	</div>
+		<div class="section-center">
+			<div class="container" >
+				<div class="row" >
+					<div class="booking-form" style="height:700px; width:700px;">
+						<div class="form-header" style="margin-top:20px">
+<!--							<h1>Make your Reservation For Spa Treatments..!</h1>-->
+						</div>
+						<form method="post" action="{% url 'savespa' %}" enctype="multipart/form-data">
+							{% csrf_token %}
+							<div class="form-group" style="margin-top:30px" >
+								<h2>Name of the Person Booking</h2>
+								<input class="form-control" type="text" placeholder="Name" name="name" >
+
+							</div>
+							<div class="row" style="margin-top:9px">
+								<div class="col-md-6">
+									<div class="form-group">
+										<h2>Check In</h2>
+										<input class="form-control" type="date" required name="checkin" style="font-size:15px;">
+
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<h2>Check Out</h2>
+										<input class="form-control" type="date" required name="checkout" style="font-size:15px;">
+
+									</div>
+								</div>
+							</div>
+							<div class="row" >
+								<div class="col-md-4">
+									<div class="form-group">
+										<h2>Rooms</h2>
+										<select class="form-control" required name="rooms" style="font-size:15px;color:white">
+											<option value="" selected hidden>no of rooms</option>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+										<span class="select-arrow"></span>
+
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<h2>Adults</h2>
+										<select class="form-control" required name="adult"style="font-size:15px;color:white" >
+											<option value="" selected hidden>no of adults</option>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+										<span class="select-arrow"></span>
+
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<h2>Children</h2>
+										<select class="form-control" required name="children" style="font-size:15px;color:white">
+											<option value="" selected hidden>no of children</option>
+											<option>0</option>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+										<span class="select-arrow"></span>
+
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<h2>Email</h2>
+										<input class="form-control" type="email" placeholder="Enter your Email" name="email">
+
+									</div>
+								</div>
+								<div class="col-md-6" >
+									<div class="form-group">
+										<h2>Phone</h2>
+										<input class="form-control" type="tel" placeholder="Enter you Phone" name="phone">
+
+									</div>
+								</div>
+
+							</div>
+							<div class="col-md-6" >
+									<div class="form-group">
+										<h2>Id Proof</h2>
+										<input type="file" name="imgs">
+
+									</div>
+
+							</div>
+
+							<div class="form-btn">
+								<button type="submit" class="btn btn-danger btn-lg" style="font-size:20px"><a href="{% url 'booked_detail' %}"></a> BOOK NOW</button>
+							</div>
+							<div>
+								 <input type="hidden" name="User" value="{{request.session.Username}}">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+	<script>
+		$('.form-control').each(function () {
+			floatedLabel($(this));
+		});
+
+		$('.form-control').on('input', function () {
+			floatedLabel($(this));
+		});
+
+		function floatedLabel(input) {
+			var $field = input.closest('.form-group');
+			if (input.val()) {
+				$field.addClass('input-not-empty');
+			} else {
+				$field.removeClass('input-not-empty');
+			}
+		}
+	</script>
+<style>
+	/* CSS to style your form elements */
+/* For example, targeting the input fields */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Targeting the buttons */
+.form-btn button {
+    background-color: #ff0000; /* Red background color */
+    color: #fff; /* White text color */
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Styling headings */
+h2 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: white;
+}
+.form-control::placeholder {
+    color: white;
+    font-size:16px;
+}
+/* CSS to style select dropdowns and labels */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /* Additional styles specific to form controls */
+    /* Modify as needed */
+}
+
+/* Styling for the select arrows */
+.select-arrow {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.image-container {
+    position: relative;
+    width: 100%; /* Set the width of the container */
+    height: 900px; /* Set the height of the container */
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the container */
+}
+
+.image-container h1 {
+    position: absolute;
+    top: 50%; /* Position the text 50% from the top */
+    left: 50%; /* Position the text 50% from the left */
+    transform: translate(-50%, -50%); /* Center the text horizontally and vertically */
+    color: orange; /* Text color */
+    text-align: center; /* Center-align the text */
+    z-index: 1; /* Ensure the text is above the image */
+    /* Additional styles for the text */
+    font-size:40px;
+}
+
+
+
+
+
+</style>
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+{% if messages %}
+   {% for i in messages %}
+      {% if i.tags == 'warning' %}
+         <script>
+             swal('{{i}}','','warning');
+         </script>
+      {% elif i.tags == 'error' %}
+          <script>
+              swal('{{i}}','','error');
+          </script>
+      {% elif i.tags == 'success' %}
+         <script>
+             swal('{{i}}','','success');
+
+         </script>
+      {% else %}
+         <script>
+             swal('{{i}}','','info');
+         </script>
+      {% endif %}
+   {% endfor %}
+{% endif %}
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>

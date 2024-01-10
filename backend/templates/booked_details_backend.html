@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card-body">
+                  <h2 class="card-title">Booked Details</h2>
+
+                  <div class="table-responsive pt-4" style="width:1000px">
+                    <table class="table table-dark">
+                      <thead>
+                        <tr>
+                            <th>
+                                USER
+                            </th>
+                          <th>
+                            CATEGORY
+                          </th>
+                          <th>
+                           NAME
+                          </th>
+                          <th>
+                            TOTAL PRICE
+                          </th>
+
+<!--                            <th>-->
+<!--                                OPTIONS-->
+<!--                            </th>-->
+
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {% for i in data %}
+                          <tr>
+                            <td>{{i.username}}</td>
+                            <td>Activity</td>
+                            <td>{{i.activityname}}</td>
+                            <td>{{i.activityprice}} </td>
+                           </tr>
+                        {% endfor %}
+                      {% for hotel in data1 %}
+                          <tr>
+                            <td>{{hotel.username}}</td>
+                            <td>Hotels</td>
+                            <td> {{hotel.hotelname}} </td>
+                            <td> {{hotel.hotelprice}} </td>
+                               </tr>
+                        {% endfor %}
+                         {% for spa in data2 %}
+                          <tr>
+                            <td>{{spa.username}}</td>
+                            <td>Spa Resort</td>
+                            <td> {{spa.spaname}} </td>
+                            <td> {{spa.spaprice}} </td>
+                               </tr>
+                        {% endfor %}
+
+                      </tbody>
+                    </table>
+                      <h5>Total price:{{total_price}}</h5>
+                  </div>
+                </div>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>Vacation - Free Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="{% static 'index.html' %}">Vacaymale<span>Travel Agency</span></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item"><a href="{% url 'homepg' %}" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+
+<!--	          <li class="nav-item active"><a href="{% static 'blog.html' %}" class="nav-link">Blog</a></li>-->
+	          <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+<!--	          <li class="nav-item cta"><a href="#" class="nav-link">Book Now</a></li>-->
+
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url({% static 'images/maldi.jpg' %});" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+          <div class="col-md-9 ftco-animate pb-5 text-center">
+            <h1 class="mb-3 bread">BOOKED DETAILS</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="{% static 'index.html' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>BOOKED DETAILS <i class="ion-ios-arrow-forward"></i></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row d-flex">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">BOOKING DETAILS</h4>
+<!--                    <p class="card-description"> Add class <code>.table-dark</code>-->
+<!--                    </p>-->
+
+                    <div class="table-responsive">
+                      <table class="table table-skyblue">
+                        <thead>
+
+                        <tr>
+                          <th>USER</th>
+                          <th>Category</th>
+                          <th>Name</th>
+                          <th>Price</th>
+
+<!--                          <th>Options</th>-->
+                        </tr>
+                        </thead>
+<!--                          <tr>-->
+<!--                            <th> Activity Name</th>-->
+<!--                            <th> Activity Price</th>-->
+
+<!--                          </tr>-->
+<!--                        </thead>-->
+                        <tbody>
+                        {% for i in data %}
+                          <tr>
+                            <td>{{i.username}}</td>
+                            <td>Activity</td>
+                            <td>{{i.activityname}}</td>
+                            <td>{{i.activityprice}} </td>
+                            <td>
+                                <a href="{% url 'delete_booking' dataid=i.id %}">
+                                  <button class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash2-fill" viewBox="0 0 16 16">
+  <path d="M2.037 3.225A.703.703 0 0 1 2 3c0-1.105 2.686-2 6-2s6 .895 6 2a.702.702 0 0 1-.037.225l-1.684 10.104A2 2 0 0 1 10.305 15H5.694a2 2 0 0 1-1.973-1.671L2.037 3.225zm9.89-.69C10.966 2.214 9.578 2 8 2c-1.58 0-2.968.215-3.926.534-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466-.18-.14-.498-.307-.975-.466z"/>
+</svg></button>
+								 </a>
+                            </td>
+
+
+
+                          </tr>
+                        {% endfor %}
+<!--                        </tbody>-->
+<!--                      </table>-->
+<!--                    </div>-->
+
+
+
+<!--                      <div class="table-responsive">-->
+<!--                      <table class="table table-dark">-->
+<!--                        <thead>-->
+<!--                          <tr>-->
+<!--                            <th> Hotel Name</th>-->
+<!--                            <th> Hotel Price</th>-->
+<!--                          </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+                        {% for hotel in data1 %}
+                          <tr>
+                            <td>{{hotel.username}}</td>
+                            <td>Hotels</td>
+                            <td> {{hotel.hotelname}} </td>
+                            <td> {{hotel.hotelprice}} </td>
+                            <td>
+                                <a href="{% url 'delete_booking_hotel' hotelid=hotel.id %}">
+                                  <button class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash2-fill" viewBox="0 0 16 16">
+  <path d="M2.037 3.225A.703.703 0 0 1 2 3c0-1.105 2.686-2 6-2s6 .895 6 2a.702.702 0 0 1-.037.225l-1.684 10.104A2 2 0 0 1 10.305 15H5.694a2 2 0 0 1-1.973-1.671L2.037 3.225zm9.89-.69C10.966 2.214 9.578 2 8 2c-1.58 0-2.968.215-3.926.534-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466-.18-.14-.498-.307-.975-.466z"/>
+</svg></button>
+								 </a>
+                            </td>
+
+
+
+                          </tr>
+                        {% endfor %}
+<!--                        </tbody>-->
+<!--                      </table>-->
+<!--                      </div>-->
+
+
+
+
+<!--                       <div class="table-responsive">-->
+<!--                      <table class="table table-dark">-->
+<!--                         <thead>-->
+<!--                          <tr>-->
+<!--                            <th> Spa Resort</th>-->
+<!--                            <th> Spa Price</th>-->
+<!--                          </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+                        {% for spa in data2 %}
+                          <tr>
+                            <td>{{spa.username}}</td>
+                            <td>Spa Resort</td>
+                            <td> {{spa.spaname}} </td>
+                            <td> {{spa.spaprice}} </td>
+                              <td>
+                                <a href="{% url 'delete_booking_spa' spaid=spa.id %}">
+                                  <button class="btn btn-warning"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash2-fill" viewBox="0 0 16 16">
+  <path d="M2.037 3.225A.703.703 0 0 1 2 3c0-1.105 2.686-2 6-2s6 .895 6 2a.702.702 0 0 1-.037.225l-1.684 10.104A2 2 0 0 1 10.305 15H5.694a2 2 0 0 1-1.973-1.671L2.037 3.225zm9.89-.69C10.966 2.214 9.578 2 8 2c-1.58 0-2.968.215-3.926.534-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466-.18-.14-.498-.307-.975-.466z"/>
+</svg></button>
+								 </a>
+                            </td>
+
+
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                       </div>
+
+                    <div style="margin-left:850px;background-color:grey;width:200px;height:200px;border-radius:20px">
+							<div class="card-header py=5" style="background-color:orange">
+								<h3 style="color:white">Summary</h3>
+							</div>
+
+							<div class="card-body">
+<!--								<h3 style="color:white; margin-top:40px;margin-left:20px">Total products:</h3><br>-->
+								<h3 style="color:white; margin-top:-20px;margin-left:-10px">Total price:{{total_price}}</h3><br>
+
+
+
+
+							</div>
+						</div>
+
+
+
+
+<!--                            <td> July 1, 2015 </td>-->
+<!--                          </tr>-->
+<!--                          <tr>-->
+<!--                            <td> 3 </td>-->
+<!--                            <td> John Richards </td>-->
+<!--                            <td> $138.00 </td>-->
+<!--                            <td> Apr 12, 2015 </td>-->
+<!--                          </tr>-->
+<!--                          <tr>-->
+<!--                            <td> 4 </td>-->
+<!--                            <td> Peter Meggik </td>-->
+<!--                            <td> $ 77.99 </td>-->
+<!--                            <td> May 15, 2015 </td>-->
+<!--                          </tr>-->
+<!--                          <tr>-->
+<!--                            <td> 5 </td>-->
+<!--                            <td> Edward </td>-->
+<!--                            <td> $ 160.25 </td>-->
+<!--                            <td> May 03, 2015 </td>-->
+<!--                          </tr>-->
+<!--                          <tr>-->
+<!--                            <td> 6 </td>-->
+<!--                            <td> John Doe </td>-->
+<!--                            <td> $ 123.21 </td>-->
+<!--                            <td> April 05, 2015 </td>-->
+<!--                          </tr>-->
+<!--                          <tr>-->
+<!--                            <td> 7 </td>-->
+<!--                            <td> Henry Tom </td>-->
+<!--                            <td> $ 150.00 </td>-->
+<!--                            <td> June 16, 2015 </td>-->
+<!--                          </tr>-->
+                      <a href="{% url 'homepg' %}"  class="orange-button" style="color:black;">Continue Bookings</a>
+                       <a href="{% url 'paymentpage' %}"  class="orange-button" style="color:black; margin-left:300px">Click For Payment</a>
+
+                    </div>
+
+                  </div>
+
+                </div>
+        </div>
+
+
+<!--          <div class="col-md-4 d-flex ftco-animate">-->
+<!--          	<div class="blog-entry justify-content-end">-->
+<!--              <a href="{% static 'blog-single.html' %}" class="block-20" style="background-image: url({% static 'images/image_1.jpg' %});">-->
+<!--              </a>-->
+<!--              <div class="text mt-3 float-right d-block">-->
+<!--              	<div class="d-flex align-items-center mb-4 topp">-->
+<!--              		<div class="one">-->
+<!--              			<span class="day">21</span>-->
+<!--              		</div>-->
+<!--              		<div class="two">-->
+<!--              			<span class="yr">2019</span>-->
+<!--              			<span class="mos">August</span>-->
+<!--              		</div>-->
+<!--              	</div>-->
+<!--                <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>-->
+<!--                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-4 d-flex ftco-animate">-->
+<!--          	<div class="blog-entry justify-content-end">-->
+<!--              <a href="{% static 'blog-single.html' %}" class="block-20" style="background-image: url({% static 'images/image_2.jpg' %});">-->
+<!--              </a>-->
+<!--              <div class="text mt-3 float-right d-block">-->
+<!--              	<div class="d-flex align-items-center mb-4 topp">-->
+<!--              		<div class="one">-->
+<!--              			<span class="day">21</span>-->
+<!--              		</div>-->
+<!--              		<div class="two">-->
+<!--              			<span class="yr">2019</span>-->
+<!--              			<span class="mos">August</span>-->
+<!--              		</div>-->
+<!--              	</div>-->
+<!--                <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>-->
+<!--                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-4 d-flex ftco-animate">-->
+<!--          	<div class="blog-entry">-->
+<!--              <a href="{% static 'blog-single.html' %}" class="block-20" style="background-image: url({% static 'images/image_3.jpg' %});">-->
+<!--              </a>-->
+<!--              <div class="text mt-3 float-right d-block">-->
+<!--              	<div class="d-flex align-items-center mb-4 topp">-->
+<!--              		<div class="one">-->
+<!--              			<span class="day">21</span>-->
+<!--              		</div>-->
+<!--              		<div class="two">-->
+<!--              			<span class="yr">2019</span>-->
+<!--              			<span class="mos">August</span>-->
+<!--              		</div>-->
+<!--              	</div>-->
+<!--                <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>-->
+<!--                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="col-md-4 d-flex ftco-animate">-->
+<!--          	<div class="blog-entry justify-content-end">-->
+<!--              <a href="{% static 'blog-single.html' %}" class="block-20" style="background-image: url({% static 'images/image_4.jpg' %});">-->
+<!--              </a>-->
+<!--              <div class="text mt-3 float-right d-block">-->
+<!--              	<div class="d-flex align-items-center mb-4 topp">-->
+<!--              		<div class="one">-->
+<!--              			<span class="day">21</span>-->
+<!--              		</div>-->
+<!--              		<div class="two">-->
+<!--              			<span class="yr">2019</span>-->
+<!--              			<span class="mos">August</span>-->
+<!--              		</div>-->
+<!--              	</div>-->
+<!--                <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>-->
+<!--                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-4 d-flex ftco-animate">-->
+<!--          	<div class="blog-entry justify-content-end">-->
+<!--              <a href="{% static 'blog-single.html' %}" class="block-20" style="background-image: url({% static 'images/image_5.jpg' %});">-->
+<!--              </a>-->
+<!--              <div class="text mt-3 float-right d-block">-->
+<!--              	<div class="d-flex align-items-center mb-4 topp">-->
+<!--              		<div class="one">-->
+<!--              			<span class="day">21</span>-->
+<!--              		</div>-->
+<!--              		<div class="two">-->
+<!--              			<span class="yr">2019</span>-->
+<!--              			<span class="mos">August</span>-->
+<!--              		</div>-->
+<!--              	</div>-->
+<!--                <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>-->
+<!--                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="col-md-4 d-flex ftco-animate">-->
+<!--          	<div class="blog-entry">-->
+<!--              <a href="{% static 'blog-single.html' %}" class="block-20" style="background-image: url({% static 'images/image_6.jpg' %});">-->
+<!--              </a>-->
+<!--              <div class="text mt-3 float-right d-block">-->
+<!--              	<div class="d-flex align-items-center mb-4 topp">-->
+<!--              		<div class="one">-->
+<!--              			<span class="day">21</span>-->
+<!--              		</div>-->
+<!--              		<div class="two">-->
+<!--              			<span class="yr">2019</span>-->
+<!--              			<span class="mos">August</span>-->
+<!--              		</div>-->
+<!--              	</div>-->
+<!--                <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>-->
+<!--                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+        </div>
+        <div class="row mt-5">
+          <div class="col text-center">
+<!--            <div class="block-27">-->
+<!--              <ul>-->
+<!--                <li><a href="#">&lt;</a></li>-->
+<!--                <li class="active"><span>1</span></li>-->
+<!--                <li><a href="#">2</a></li>-->
+<!--                <li><a href="#">3</a></li>-->
+<!--                <li><a href="#">4</a></li>-->
+<!--                <li><a href="#">5</a></li>-->
+<!--                <li><a href="#">&gt;</a></li>-->
+<!--              </ul>-->
+<!--            </div>-->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ftco-footer bg-bottom" style="background-image: url({% static 'images/footer-bg.jpg' %});">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Vacaymale</h2>
+              <p>Vacaymale is your perfect choice for vacation in Maldives,We provide services as per your taste.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Information</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Online Enquiry</a></li>
+                <li><a href="#" class="py-2 d-block">General Enquiries</a></li>
+                <li><a href="#" class="py-2 d-block">Booking Conditions</a></li>
+
+                <li><a href="#" class="py-2 d-block">Call Us</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Experience</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Adventure</a></li>
+                <li><a href="#" class="py-2 d-block">Hotel </a></li>
+                <li><a href="#" class="py-2 d-block">Beach</a></li>
+                <li><a href="#" class="py-2 d-block">Nature</a></li>
+                <li><a href="#" class="py-2 d-block">Camping</a></li>
+                <li><a href="#" class="py-2 d-block">Spa Resorts</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">98 West 21th Street, Maldives</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+1235 2355 98</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">vacaymale@gmail.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="#" target="_blank">Vacaymale</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+  <script src="{% static 'js/scrollax.min.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'js/google-map.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+
+  <style>
+      .orange-button {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.orange-button:hover {
+  background-color: darkorange;
+}
+
+  </style>
+
+  </body>
+</html>

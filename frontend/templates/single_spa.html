@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+
+    <title>Vacation - Free Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="{% static 'index.html' %}">Vacaymale<span>Travel Agency</span></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item"><a href="{% url 'homepg' %}" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+<!--	          <li class="nav-item active"><a href="{% static 'destination.html' %}" class="nav-link">Hotel Rooms</a></li>-->
+
+	          <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+<!--	          <li class="nav-item cta"><a href="#" class="nav-link">Book Now</a></li>-->
+
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url({% static 'images/spa resort.jpg' %});" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+          <div class="col-md-9 ftco-animate pb-5 text-center">
+            <h1 class="mb-3 bread">SPA RESORTS</h1>
+            <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'homepg' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>About us <i class="ion-ios-arrow-forward"></i></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row justify-content-center pb-4">
+          <div class="col-md-12 heading-section text-center ftco-animate">
+            <h2 class="mb-4">RESORTS</h2>
+          </div>
+        </div>
+        <div class="row">
+
+        	<div class="col-md-3 ftco-animate">
+        		<div class="project-destination">
+        			<a href="#" class="img" style="background-image: url({{data_spa.image.url}});background-size: 300px 300px;">
+        				<div class="text">
+
+
+<!--        					<span>{{i.city}}</span>-->
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+<!--            <div style="margin-left:70px">-->
+<!--           <img src="{{data_hotel.image1.url}}" width="300px" height="300px">-->
+<!--            </div>-->
+
+<!--            <div style="margin-left:70px">-->
+<!--            <img src="{{data_hotel.image2.url}}" width="300px" height="300px">-->
+<!--            </div>-->
+
+<!--            <div style="margin-left:px">-->
+<!--            <img src="{{data_hotel.image3.url}}" width="300px" height="300px">-->
+<!--            </div>-->
+<!--            <div class="rate">-->
+<!--    <input type="radio" id="star5" name="rate" value="5" />-->
+<!--    <label for="star5" title="text">5 stars</label>-->
+<!--    <input type="radio" id="star4" name="rate" value="4" />-->
+<!--    <label for="star4" title="text">4 stars</label>-->
+<!--    <input type="radio" id="star3" name="rate" value="3" />-->
+<!--    <label for="star3" title="text">3 stars</label>-->
+<!--    <input type="radio" id="star2" name="rate" value="2" />-->
+<!--    <label for="star2" title="text">2 stars</label>-->
+<!--    <input type="radio" id="star1" name="rate" value="1" />-->
+<!--    <label for="star1" title="text">1 star</label>-->
+<!--  </div>-->
+             <div>
+             <h2>{{data_spa.ResortName}}</h2>
+             <h2 style="color:orange">{{data_spa.Hour}}Hour/{{data_spa.Price}}Rs</h2>
+
+<!--            <div >-->
+                <form method="post" action="{% url 'save_bookeddetails_spa' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="user" value="{{request.session.Username}}">
+                <input type="hidden" name="spaname" value="{{data_spa.ResortName}}">
+                <input type="hidden" name="spaprice" value="{{data_spa.Price}}">
+
+                <button type="submit" class="orange-button" style="color:black;text-align:center"> BookNow</button>
+                    <button type="button" class="orange-button" onclick="makeReservations()" style="color:black;text-align:center">Make Your Reservation</button>
+                    <a href="{% url 'spabooking' %}"></a>
+                     </form>
+                 <script>
+
+                    function makeReservations() {
+                    window.location.href = '{% url "spabooking" %}';
+                    }
+                </script>
+
+<!--              <a href="{% url 'hotelbooking' %}"  class="orange-button" style="color:black">Book Now</a>-->
+<!--            </div>-->
+             </div>
+
+
+
+<!--        	<div class="col-md-3 ftco-animate">-->
+<!--        		<div class="project-destination">-->
+<!--        			<a href="#" class="img" style="background-image: url({% static 'images/place-2.jpg' %});">-->
+<!--        				<div class="text">-->
+<!--        					<h3>Canada</h3>-->
+<!--        					<span>2 Tours</span>-->
+<!--        				</div>-->
+<!--        			</a>-->
+<!--        		</div>-->
+<!--        	</div>-->
+<!--        	<div class="col-md-3 ftco-animate">-->
+<!--        		<div class="project-destination">-->
+<!--        			<a href="#" class="img" style="background-image: url({% static 'images/place-3.jpg' %});">-->
+<!--        				<div class="text">-->
+<!--        					<h3>Thailand</h3>-->
+<!--        					<span>5 Tours</span>-->
+<!--        				</div>-->
+<!--        			</a>-->
+<!--        		</div>-->
+<!--        	</div>-->
+<!--        	<div class="col-md-3 ftco-animate">-->
+<!--        		<div class="project-destination">-->
+<!--        			<a href="#" class="img" style="background-image: url({% static 'images/place-4.jpg' %});">-->
+<!--        				<div class="text">-->
+<!--        					<h3>Autralia</h3>-->
+<!--        					<span>5 Tours</span>-->
+<!--        				</div>-->
+<!--        			</a>-->
+<!--        		</div>-->
+<!--        	</div>-->
+
+</div>
+        </div>
+
+        </div>
+
+    </section>
+
+
+<!--    <section class="ftco-section ftco-no-pb ftco-no-pt">-->
+<!--    	<div class="container">-->
+<!--	    	<div class="row">-->
+<!--					<div class="col-md-12 mb-5">-->
+<!--						<div class="search-wrap-1 search-wrap-notop ftco-animate p-4">-->
+<!--							<form action="#" class="search-property-1">-->
+<!--		        		<div class="row">-->
+<!--		        			<div class="col-lg align-items-end">-->
+<!--		        				<div class="form-group">-->
+<!--		        					<label >Destination</label>-->
+<!--		          				<div class="form-field">-->
+<!--		          					<div class="icon"><span class="ion-ios-search"></span></div>-->
+<!--				                <input type="text" class="form-control" placeholder="Search place">-->
+<!--				              </div>-->
+<!--			              </div>-->
+<!--		        			</div>-->
+<!--		        			<div class="col-lg align-items-end">-->
+<!--		        				<div class="form-group">-->
+<!--		        					<label >Check-in date</label>-->
+<!--		        					<div class="form-field">-->
+<!--		          					<div class="icon"><span class="ion-ios-calendar"></span></div>-->
+<!--				                <input type="text" class="form-control checkin_date" placeholder="Check In Date">-->
+<!--				              </div>-->
+<!--			              </div>-->
+<!--		        			</div>-->
+<!--		        			<div class="col-lg align-items-end">-->
+<!--		        				<div class="form-group">-->
+<!--		        					<label >Check-out date</label>-->
+<!--		        					<div class="form-field">-->
+<!--		          					<div class="icon"><span class="ion-ios-calendar"></span></div>-->
+<!--				                <input type="text" class="form-control checkout_date" placeholder="Check Out Date">-->
+<!--				              </div>-->
+<!--			              </div>-->
+<!--		        			</div>-->
+<!--		        			<div class="col-lg align-items-end">-->
+<!--		        				<div class="form-group">-->
+<!--		        					<label >Price Limit</label>-->
+<!--		        					<div class="form-field">-->
+<!--		          					<div class="select-wrap">-->
+<!--		                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>-->
+<!--		                      <select name="" id="" class="form-control">-->
+<!--		                        <option value="">$5,000</option>-->
+<!--		                        <option value="">$10,000</option>-->
+<!--		                        <option value="">$50,000</option>-->
+<!--		                        <option value="">$100,000</option>-->
+<!--		                        <option value="">$200,000</option>-->
+<!--		                        <option value="">$300,000</option>-->
+<!--		                        <option value="">$400,000</option>-->
+<!--		                        <option value="">$500,000</option>-->
+<!--		                        <option value="">$600,000</option>-->
+<!--		                        <option value="">$700,000</option>-->
+<!--		                        <option value="">$800,000</option>-->
+<!--		                        <option value="">$900,000</option>-->
+<!--		                        <option value="">$1,000,000</option>-->
+<!--		                        <option value="">$2,000,000</option>-->
+<!--		                      </select>-->
+<!--		                    </div>-->
+<!--				              </div>-->
+<!--			              </div>-->
+<!--		        			</div>-->
+<!--		        			<div class="col-lg align-self-end">-->
+<!--		        				<div class="form-group">-->
+<!--		        					<div class="form-field">-->
+<!--				                <input type="submit" value="Search" class="form-control btn btn-primary">-->
+<!--				              </div>-->
+<!--			              </div>-->
+<!--		        			</div>-->
+<!--		        		</div>-->
+<!--		        	</form>-->
+<!--		        </div>-->
+<!--					</div>-->
+<!--	    	</div>-->
+<!--	    </div>-->
+<!--    </section>-->
+
+
+<!--    <section class="ftco-section ftco-no-pt">-->
+<!--    	<div class="container">-->
+<!--    		<div class="row justify-content-center pb-4">-->
+<!--          <div class="col-md-12 heading-section text-center ftco-animate">-->
+<!--            <h2 class="mb-4">Tour Destination</h2>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--        	<div class="col-md-4 ftco-animate">-->
+<!--        		<div class="project-wrap">-->
+<!--        			<a href="#" class="img" style="background-image: url({% static 'images/destination-1.jpg' %});"></a>-->
+<!--        			<div class="text p-4">-->
+<!--        				<span class="price">$300/person</span>-->
+<!--        				<span class="days">8 Days Tour</span>-->
+<!--        				<h3><a href="#">Bali, Indonesia</a></h3>-->
+<!--        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>-->
+<!--        				<ul>-->
+<!--        					<li><span class="flaticon-shower"></span>2</li>-->
+<!--        					<li><span class="flaticon-king-size"></span>3</li>-->
+<!--        					<li><span class="flaticon-mountains"></span>Near Mountain</li>-->
+<!--        				</ul>-->
+<!--        			</div>-->
+<!--        		</div>-->
+<!--        	</div>-->
+<!--        	<div class="col-md-4 ftco-animate">-->
+<!--        		<div class="project-wrap">-->
+<!--        			<a href="#" class="img" style="background-image: url({% static 'images/destination-2.jpg' %});"></a>-->
+<!--        			<div class="text p-4">-->
+<!--        				<span class="price">$300/person</span>-->
+<!--        				<span class="days">10 Days Tour</span>-->
+<!--        				<h3><a href="#">Bali, Indonesia</a></h3>-->
+<!--        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>-->
+<!--        				<ul>-->
+<!--        					<li><span class="flaticon-shower"></span>2</li>-->
+<!--        					<li><span class="flaticon-king-size"></span>3</li>-->
+<!--        					<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>-->
+<!--        				</ul>-->
+<!--        			</div>-->
+<!--        		</div>-->
+<!--        	</div>-->
+<!--        	<div class="col-md-4 ftco-animate">-->
+<!--        		<div class="project-wrap">-->
+<!--        			<a href="#" class="img" style="background-image: url({% static 'images/destination-3.jpg' %});"></a>-->
+<!--        			<div class="text p-4">-->
+<!--        				<span class="price">$300/person</span>-->
+<!--        				<span class="days">7 Days Tour</span>-->
+<!--        				<h3><a href="#">Bali, Indonesia</a></h3>-->
+<!--        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>-->
+<!--        				<ul>-->
+<!--        					<li><span class="flaticon-shower"></span>2</li>-->
+<!--        					<li><span class="flaticon-king-size"></span>3</li>-->
+<!--        					<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>-->
+<!--        				</ul>-->
+<!--        			</div>-->
+<!--        		</div>-->
+<!--        	</div>-->
+
+<!--        	<div class="col-md-4 ftco-animate">-->
+<!--        		<div class="project-wrap">-->
+<!--        			<a href="#" class="img" style="background-image: url({% static 'images/destination-4.jpg' %});"></a>-->
+<!--        			<div class="text p-4">-->
+<!--        				<span class="price">$300/person</span>-->
+<!--        				<span class="days">8 Days Tour</span>-->
+<!--        				<h3><a href="#">Bali, Indonesia</a></h3>-->
+<!--        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>-->
+<!--        				<ul>-->
+<!--        					<li><span class="flaticon-shower"></span>2</li>-->
+<!--        					<li><span class="flaticon-king-size"></span>3</li>-->
+<!--        					<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>-->
+<!--        				</ul>-->
+<!--        			</div>-->
+<!--        		</div>-->
+<!--        	</div>-->
+<!--        	<div class="col-md-4 ftco-animate">-->
+<!--        		<div class="project-wrap">-->
+<!--        			<a href="#" class="img" style="background-image: url({% static 'images/destination-5.jpg' %});"></a>-->
+<!--        			<div class="text p-4">-->
+<!--        				<span class="price">$300/person</span>-->
+<!--        				<span class="days">10 Days Tour</span>-->
+<!--        				<h3><a href="#">Bali, Indonesia</a></h3>-->
+<!--        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>-->
+<!--        				<ul>-->
+<!--        					<li><span class="flaticon-shower"></span>2</li>-->
+<!--        					<li><span class="flaticon-king-size"></span>3</li>-->
+<!--        					<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>-->
+<!--        				</ul>-->
+<!--        			</div>-->
+<!--        		</div>-->
+<!--        	</div>-->
+<!--        	<div class="col-md-4 ftco-animate">-->
+<!--        		<div class="project-wrap">-->
+<!--        			<a href="#" class="img" style="background-image: url({% static 'images/destination-6.jpg' %});"></a>-->
+<!--        			<div class="text p-4">-->
+<!--        				<span class="price">$300/person</span>-->
+<!--        				<span class="days">7 Days Tour</span>-->
+<!--        				<h3><a href="#">Bali, Indonesia</a></h3>-->
+<!--        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>-->
+<!--        				<ul>-->
+<!--        					<li><span class="flaticon-shower"></span>2</li>-->
+<!--        					<li><span class="flaticon-king-size"></span>3</li>-->
+<!--        					<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>-->
+<!--        				</ul>-->
+<!--        			</div>-->
+<!--        		</div>-->
+<!--        	</div>-->
+
+<!--        	<div class="col-md-4 ftco-animate">-->
+<!--        		<div class="project-wrap">-->
+<!--        			<a href="#" class="img" style="background-image: url({% static 'images/destination-7.jpg' %});"></a>-->
+<!--        			<div class="text p-4">-->
+<!--        				<span class="price">$300/person</span>-->
+<!--        				<span class="days">8 Days Tour</span>-->
+<!--        				<h3><a href="#">Bali, Indonesia</a></h3>-->
+<!--        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>-->
+<!--        				<ul>-->
+<!--        					<li><span class="flaticon-shower"></span>2</li>-->
+<!--        					<li><span class="flaticon-king-size"></span>3</li>-->
+<!--        					<li><span class="flaticon-mountains"></span>Near Mountain</li>-->
+<!--        				</ul>-->
+<!--        			</div>-->
+<!--        		</div>-->
+<!--        	</div>-->
+<!--        	<div class="col-md-4 ftco-animate">-->
+<!--        		<div class="project-wrap">-->
+<!--        			<a href="#" class="img" style="background-image: url({% static 'images/destination-8.jpg' %});"></a>-->
+<!--        			<div class="text p-4">-->
+<!--        				<span class="price">$300/person</span>-->
+<!--        				<span class="days">10 Days Tour</span>-->
+<!--        				<h3><a href="#">Bali, Indonesia</a></h3>-->
+<!--        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>-->
+<!--        				<ul>-->
+<!--        					<li><span class="flaticon-shower"></span>2</li>-->
+<!--        					<li><span class="flaticon-king-size"></span>3</li>-->
+<!--        					<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>-->
+<!--        				</ul>-->
+<!--        			</div>-->
+<!--        		</div>-->
+<!--        	</div>-->
+<!--        	<div class="col-md-4 ftco-animate">-->
+<!--        		<div class="project-wrap">-->
+<!--        			<a href="#" class="img" style="background-image: url({% static 'images/destination-9.jpg' %});"></a>-->
+<!--        			<div class="text p-4">-->
+<!--        				<span class="price">$300/person</span>-->
+<!--        				<span class="days">7 Days Tour</span>-->
+<!--        				<h3><a href="#">Bali, Indonesia</a></h3>-->
+<!--        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>-->
+<!--        				<ul>-->
+<!--        					<li><span class="flaticon-shower"></span>2</li>-->
+<!--        					<li><span class="flaticon-king-size"></span>3</li>-->
+<!--        					<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>-->
+<!--        				</ul>-->
+<!--        			</div>-->
+<!--        		</div>-->
+<!--        	</div>-->
+
+<!--        	<div class="col-md-4 ftco-animate">-->
+<!--        		<div class="project-wrap">-->
+<!--        			<a href="#" class="img" style="background-image: url({% static 'images/destination-10.jpg' %});"></a>-->
+<!--        			<div class="text p-4">-->
+<!--        				<span class="price">$300/person</span>-->
+<!--        				<span class="days">8 Days Tour</span>-->
+<!--        				<h3><a href="#">Bali, Indonesia</a></h3>-->
+<!--        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>-->
+<!--        				<ul>-->
+<!--        					<li><span class="flaticon-shower"></span>2</li>-->
+<!--        					<li><span class="flaticon-king-size"></span>3</li>-->
+<!--        					<li><span class="flaticon-mountains"></span>Near Mountain</li>-->
+<!--        				</ul>-->
+<!--        			</div>-->
+<!--        		</div>-->
+<!--        	</div>-->
+<!--        	<div class="col-md-4 ftco-animate">-->
+<!--        		<div class="project-wrap">-->
+<!--        			<a href="#" class="img" style="background-image: url({% static 'images/destination-11.jpg' %});"></a>-->
+<!--        			<div class="text p-4">-->
+<!--        				<span class="price">$300/person</span>-->
+<!--        				<span class="days">10 Days Tour</span>-->
+<!--        				<h3><a href="#">Bali, Indonesia</a></h3>-->
+<!--        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>-->
+<!--        				<ul>-->
+<!--        					<li><span class="flaticon-shower"></span>2</li>-->
+<!--        					<li><span class="flaticon-king-size"></span>3</li>-->
+<!--        					<li><span class="flaticon-sun-umbrella"></span>Near Beach</li>-->
+<!--        				</ul>-->
+<!--        			</div>-->
+<!--        		</div>-->
+<!--        	</div>-->
+<!--        	<div class="col-md-4 ftco-animate">-->
+<!--        		<div class="project-wrap">-->
+<!--        			<a href="#" class="img" style="background-image: url({% static 'images/destination-12.jpg' %});"></a>-->
+<!--        			<div class="text p-4">-->
+<!--        				<span class="price">$300/person</span>-->
+<!--        				<span class="days">7 Days Tour</span>-->
+<!--        				<h3><a href="#">Bali, Indonesia</a></h3>-->
+<!--        				<p class="location"><span class="ion-ios-map"></span> Bali, Indonesia</p>-->
+<!--        				<ul>-->
+<!--        					<li><span class="flaticon-shower"></span>2</li>-->
+<!--        					<li><span class="flaticon-king-size"></span>3</li>-->
+<!--        					<li><span class="flaticon-mountains"></span>Near Mountain</li>-->
+<!--        				</ul>-->
+<!--        			</div>-->
+<!--        		</div>-->
+<!--        	</div>-->
+<!--        </div>-->
+<!--        <div class="row mt-5">-->
+<!--          <div class="col text-center">-->
+<!--            <div class="block-27">-->
+<!--              <ul>-->
+<!--                <li><a href="#">&lt;</a></li>-->
+<!--                <li class="active"><span>1</span></li>-->
+<!--                <li><a href="#">2</a></li>-->
+<!--                <li><a href="#">3</a></li>-->
+<!--                <li><a href="#">4</a></li>-->
+<!--                <li><a href="#">5</a></li>-->
+<!--                <li><a href="#">&gt;</a></li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--    	</div>-->
+<!--    </section>-->
+
+    <footer class="ftco-footer bg-bottom" style="background-image: url({% static 'images/footer-bg.jpg' %});">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Vacaymale</h2>
+              <p>Vacaymale is your perfect choice for vacation in Maldives,We provide services as per your taste.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Information</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Online Enquiry</a></li>
+                <li><a href="#" class="py-2 d-block">General Enquiries</a></li>
+                <li><a href="#" class="py-2 d-block">Booking Conditions</a></li>
+
+                <li><a href="#" class="py-2 d-block">Call Us</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Experience</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-2 d-block">Adventure</a></li>
+                <li><a href="#" class="py-2 d-block">Hotel </a></li>
+                <li><a href="#" class="py-2 d-block">Beach</a></li>
+                <li><a href="#" class="py-2 d-block">Nature</a></li>
+                <li><a href="#" class="py-2 d-block">Camping</a></li>
+                <li><a href="#" class="py-2 d-block">Spa Resorts</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">98 West 21th Street, Maldives</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+1235 2355 98</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">vacaymale@gmail.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="#" target="_blank">Vacaymale</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+  <script src="{% static 'js/scrollax.min.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'js/google-map.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+
+  <style>
+  .orange-button {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.orange-button:hover {
+  background-color: darkorange;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+
+  </style>
+
+
+  </body>
+</html>
